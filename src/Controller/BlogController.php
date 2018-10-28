@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,24 +43,9 @@ class BlogController extends AbstractController
         $article = new Article();
 
         $form = $this->createFormBuilder($article)
-                    ->add('title',TextType::class, [
-                        'attr' => [
-                            'placeholder' => "Titre de l'article",
-                            'class' => "form-control"
-                        ]
-                    ])
-                    ->add('content',TextareaType::class, [
-                        'attr' => [
-                            'placeholder' => "Contenu",
-                            'class' => "form-control"
-                        ]
-                    ])
-                    ->add('image',TextType::class, [
-                        'attr' => [
-                            'placeholder' => "Contenu",
-                            'class' => "form-control"
-                        ]
-                    ])
+                    ->add('title')
+                    ->add('content')
+                    ->add('image')
                     ->getForm();
 
         return $this->render('blog/create.html.twig',  [
