@@ -14,7 +14,13 @@
 
         {{ form_row(formArticle.image, {'attr': {'placeholder' : "URL de l'image"}}) }}
 
-        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <button type="submit" class="btn btn-success">
+            {% if editMode %}
+                Enregistrer
+            {% else %}
+                Ajouter l'article
+            {% endif %}
+        </button>
 
     {{ form_end(formArticle) }}
 
